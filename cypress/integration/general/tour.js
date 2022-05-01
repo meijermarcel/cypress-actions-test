@@ -7,9 +7,10 @@
 //yo
 describe('Make sure site loads', () => {
     beforeEach(() => {
-        const moviesListUrl = 'https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&api_key=36260422e9e3ed103f3bcf59797280b4';
+        const API_KEY = Cypress.env('REACT_APP_MOVIE_API')
+        const moviesListUrl = 'https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&api_key=' + API_KEY;
 
-        const configUrl = 'https://api.themoviedb.org/3/configuration?api_key=36260422e9e3ed103f3bcf59797280b4'
+        const configUrl = 'https://api.themoviedb.org/3/configuration?api_key=' + API_KEY
 
         cy.intercept(moviesListUrl, {
             fixture: 'moviesList',
