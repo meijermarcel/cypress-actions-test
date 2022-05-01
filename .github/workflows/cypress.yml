@@ -1,19 +1,20 @@
 name: Run Cypress Tests
 
-on: push
+on: [push]
 
 jobs:
   run_cypress:
     name: Run Cypress
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       
       - name: Cypress Run
         uses: cypress-io/github-action@v2
         with:
+          build: npm run build
           start: npm start
           config-file: cypressA.json
           wait-on: "http://localhost:3000"
